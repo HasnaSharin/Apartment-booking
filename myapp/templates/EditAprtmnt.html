@@ -1,0 +1,98 @@
+<!doctype html>
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="col-md-12">
+<div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 style="color:navy">Edit Your Details </h5>
+                                                        <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <form class="form-material" method="post" action="{% url 'update_apartment' Apartmentid=data.id %}" enctype="multipart/form-data">
+                                                            {% csrf_token %}
+                                                            <div class="form-group form-default">
+                                                                <input type="text"  class="form-control" required="" name="name" value="{{data.Aname}}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Apartment Category</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text"  class="form-control" required="" name="owner" value="{{data.Oname}}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Owner Name</label>
+                                                            </div>
+
+                                                            <div class="form-group form-default">
+                                                                <select  class="form-control opt" name="category">
+                                                                    <option>{{data.Category}}</option>
+                                                                    <option>Select Category</option>
+                                                                    <option>Rent</option>
+                                                                    <option>Buy</option>
+                                                                    <option>Commercial</option>
+                                                                    <option>PG</option>
+
+                                                                </select>
+
+
+<!--                                                            </div>-->
+                                                            <div class="immg">
+                                                                <img src="{{data.Image.url}}" width="100em" height="100em">
+                                                                <input type="file" name="image" class="form-control" >
+                                                            </div>
+
+
+                                                            <div class="form-group form-default">
+                                                                <textarea class="form-control" required="" name="description">{{data.Description}}</textarea>
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Description</label>
+                                                            </div>
+                                                            <div>
+                                                                <form action="{% url 'disp_apartment' %}" >
+                                                                    <button type="submit" class="but1">Submit</button>
+                                                                </form>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--<div class="col-md-6">-->
+<!--   <img src="{% static 'assets/images/flat.jpg' %}" class="img1">-->
+<!--    </div>-->
+    </div>
+<style>
+    .but1{
+    background-color:green;
+    color:white;
+    margin-left:500px;
+    width:80px;
+    height:50px;
+    }
+<!--    .opt{-->
+<!--    width:1050px;-->
+<!--    height:40px;-->
+<!--    }-->
+<!--    .immg{-->
+<!--    width:1000px;-->
+<!--    }-->
+      .img1{
+      margin-left:650px;
+      width:500px;
+      height:500px;
+      margin-top:-600px;
+
+
+</style>
+
+</body>
+</html>
+{% endblock %}

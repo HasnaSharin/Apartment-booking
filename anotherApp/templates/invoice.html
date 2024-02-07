@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="https://images01.nicepagecdn.com/page/47/41/web-page-design-preview-474176.jpg" jsaction="VQAsE" class="r48jcc pT0Scc iPVvYb" style="max-width: 2000px; height: 904px; margin: 0px; width: 1851px;" alt="Thank you Web Page Design" jsname="kn3ccd" data-ilt="1692251318136">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+      {% for i in messages %}
+           {% if i.tags == 'warning' %}
+               <script>
+                    swal('{{i}}','','warning');
+               </script>
+           {% elif i.tags == 'error' %}
+               <script>
+                    swal('{{i}}','','error');
+               </script>
+           {% else %}
+               <script>
+                    swal('{{i}}','','success');
+               </script>
+           {% endif %}
+        {% endfor %}
+  {% endif %}
+</body>
+</html>

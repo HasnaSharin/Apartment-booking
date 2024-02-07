@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                                            <div class="card-header">
+                                                <h5>Apartment Details</h5>
+<!--                                                <span>use class <code>table-inverse</code> inside table element</span>-->
+                                                <div class="card-header-right">
+
+                                                    <ul class="list-unstyled card-option">
+                                                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                        <li><i class="fa fa-minus minimize-card"></i></li>
+                                                        <li><i class="fa fa-refresh reload-card"></i></li>
+                                                        <li><i class="fa fa-trash close-card"></i></li>
+                                                    </ul>
+
+                                                 </div>
+
+                                            </div>
+                                            <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <table class="table table-inverse">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Category</th>
+                                                                <th>Comapany Name</th>
+                                                                <th>Price</th>
+                                                                <th>Types</th>
+                                                                <th>Area</th>
+                                                                <th>Image</th>
+                                                                <th>Description</th>
+
+
+
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for d in Types %}
+                                                           <tr>
+                                                               <td>{{d.Category}}</td>
+                                                               <td>{{d.Company_Name}}</td>
+                                                               <td>{{d.Price}}</td>
+                                                               <td>{{d.Types}}</td>
+
+
+                                                               <td>{{d.Area}}</td>
+                                                                <td>
+                                                                   <img src="{{d.Type_Image.url}}" width="100px" height="100px">
+
+                                                               </td>
+                                                               <td>{{d.Location}}</td>
+                                                               <td>{{d.Description}}</td>
+                                                               <td>
+                                                                   <form action="{% url 'Edit_type' Apartmentid=d.id %}">
+                                                                       <button type="submit">Edit</button>
+                                                                   </form>
+                                                               </td>
+
+                                                               <td>
+                                                                   <form action="{% url 'delete_type' Apartmentid=d.id %}">
+                                                                       <button type="submit">Delete</button>
+                                                                   </form>
+                                                               </td>
+
+
+
+                                                           </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+</body>
+</html>
+{% endblock %}
